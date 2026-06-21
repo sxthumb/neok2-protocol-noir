@@ -1,9 +1,9 @@
 <header style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #000; padding-bottom: 16px; margin-bottom: 32px;">
   <div>
-    <span class="technical-marker">[CLASSIFICATION: UNCLASSIFIED]</span>
+    <span class="technical-marker">[{{ site.classification | default: 'CLASSIFICATION: UNCLASSIFIED' }}]</span>
     <h1 style="margin: 0; font-size: 32px;">{{ site.title }}</h1>
   </div>
   <div class="technical-marker">
-    [SYS_REF: #{{ "now" | date: "%Y%m%d" }}]
+    [{{ site.system_id | default: 'SYS_REF_000' }} // #{{ "now" | date: "%Y%m%d" }}]
   </div>
 </header>
