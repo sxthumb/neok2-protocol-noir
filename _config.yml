@@ -1,0 +1,9 @@
+title: Protocol Noir
+description: Design system built for high-stakes information density and clinical precision.
+theme: jekyll-theme-protocol-noir
+
+protocol_noir:
+  colors:
+    surface: '#f9f9f9'
+    primary: '#000000'
+    on_primary: '#ffffff'
