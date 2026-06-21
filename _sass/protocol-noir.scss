@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght=700&family=Inter:wght@400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-// 1. Variáveis baseadas no seu Design System
+// Variáveis do Design System
 $surface: #f9f9f9;
 $primary: #000000;
 $on-primary: #ffffff;
@@ -8,8 +8,11 @@ $outline: #7e7576;
 $surface-container: #eeeeee;
 
 $spacing-unit: 4px;
-$gutter: 24px;
 $margin: 32px;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   background-color: $surface;
@@ -17,40 +20,69 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  margin: $margin;
-  padding: 0;
+  margin: 0;
+  padding: $margin;
 }
 
-// Mapeamento automático do título principal do Dossier
-h1:first-of-type {
-  background-color: $primary;
-  color: $on-primary;
-  padding: 12px 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 20px;
-  display: inline-block;
-  margin-bottom: 24px;
-  text-transform: uppercase;
+// Container Geral do Dossier (Canvas Centralizado)
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  background: #ffffff;
+  padding: $margin !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
 }
 
+// Configuração dos Títulos
 h1, h2, h3, h4 {
   font-family: 'Archivo Narrow', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  margin-top: calc($spacing-unit * 4);
-  margin-bottom: calc($spacing-unit * 2);
+  margin-top: calc($spacing-unit * 8);
+  margin-bottom: calc($spacing-unit * 4);
 }
 
-h1 { font-size: 48px; line-height: 1.1; }
-h2 { font-size: 24px; line-height: 1.2; border-bottom: 4px solid $primary; padding-bottom: 4px; }
+// Primeiro H1 (Título Principal do Dossier)
+h1:first-of-type {
+  width: 100%;
+  border-top: 1px solid $primary;
+  border-bottom: 4px solid $primary;
+  padding: 16px 0;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 32px;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: -0.02em;
+  display: block;
+  background: transparent !important;
+  color: $primary !important;
+}
 
-code, pre, .data-mono {
+h2 {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid $primary;
+  padding-bottom: 8px;
+  margin-top: 40px;
+}
+
+h3 {
+  font-size: 14px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  margin-top: 24px;
 }
 
-// Mapeamento Automático: Transforma seu > blockquote em uma Blackout Bar brutalista
+hr {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 40px 0;
+}
+
+// Transforma o Citação (>) na "Blackout Bar" do Bloco de Eventos
 blockquote {
   background-color: $primary !important;
   color: $on-primary !important;
@@ -58,15 +90,16 @@ blockquote {
   border-left: none !important;
   margin: 16px 0 !important;
   font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
   
   p {
     margin: 0;
     line-height: 1.8;
-    text-transform: uppercase;
   }
 }
 
-// Mapeamento Automático: Transforma suas listas normais de tecnologias e identificadores em mono espaçado técnico
+// Transforma Listas Normais em Listas Técnicas Monofasadas
 ul {
   list-style: none;
   padding: 0;
@@ -75,72 +108,26 @@ ul {
   li {
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
+    font-size: 12px;
     margin-bottom: 8px;
-    display: block; 
     letter-spacing: 0.05em;
   }
 }
 
-button, .btn {
-  background: $primary;
-  color: $on-primary;
-  border: none;
-  border-radius: 0px !important; 
-  padding: 12px 24px;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.1s ease;
-
-  &:hover {
-    background: $on-primary;
-    color: $primary;
-    outline: 2px solid $primary;
-  }
-}
-
-// Mantido para compatibilidade caso queira usar via HTML
-.leader-list {
-  list-style: none;
-  padding: 0;
-  
-  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 8px;
-    font-family: 'JetBrains Mono', monospace;
-
-    &::before {
-      content: "";
-      flex-grow: 1;
-      order: 2;
-      border-bottom: 2px dotted $outline; 
-      margin: 0 8px;
-      position: relative;
-      top: -4px;
-    }
-    
-    .label { order: 1; }
-    .value { order: 3; }
-  }
-}
-
-// Mapeamento Automático: Tabelas Clínicas sem bordas verticais
+// Tabelas Clínicas de Alta Densidade
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 24px 0;
   font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
   
   th {
     background-color: $primary;
     color: $on-primary;
-    font-family: 'JetBrains Mono', monospace;
-    text-transform: uppercase;
     padding: 10px;
     font-weight: 600;
-    font-size: 12px;
     text-align: left;
     border: none;
   }
@@ -148,14 +135,17 @@ table {
   td {
     padding: 12px 10px;
     border-bottom: 1px solid $outline;
-    font-size: 13px;
     text-align: left;
   }
 }
 
-.technical-marker {
+// Marcadores de Página / Rodapés Técnicos (Último Parágrafo)
+p:last-of-type {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   color: $outline;
   text-transform: uppercase;
+  text-align: right;
+  margin-top: 48px;
+  letter-spacing: 0.1em;
 }
